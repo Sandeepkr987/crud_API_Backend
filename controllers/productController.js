@@ -32,7 +32,7 @@ const updateProduct = async (req, res) => {
     try{
         const id = req.params.id
         const updatedProduct = req.body
-        const product = await productModel.findByIdAndUpdate(id, updatedProduct)
+        const productUpdated = await productModel.findByIdAndUpdate(id, updatedProduct)
        
         if(!product) {
             return res.status(404).json({message: err.message})
