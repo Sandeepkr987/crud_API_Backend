@@ -31,12 +31,12 @@ const createProduct = async(req, res) => {
 const updateProduct = async (req, res) => {
     try{
         const id = req.params.id
-        const product = await productModel.findByIdAndUpdate(id)
+        const updatedProduct = req.body
+        const product = await productModel.findByIdAndUpdate(id, updatedProduct)
+       
         if(!product) {
             return res.status(404).json({message: err.message})
         }
-
-        const productUpdated = await productModel.findById(id)
         res.status(200).json(productUpdated)
 
     } catch(err) {
